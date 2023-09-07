@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimedleWeb", "AnimedleWeb.csproj", "{702BD2C3-AD53-4B26-AAB0-25E32F27C26E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{702BD2C3-AD53-4B26-AAB0-25E32F27C26E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{702BD2C3-AD53-4B26-AAB0-25E32F27C26E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{702BD2C3-AD53-4B26-AAB0-25E32F27C26E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{702BD2C3-AD53-4B26-AAB0-25E32F27C26E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {410CA5AB-8765-4AAA-8888-4B8200C6D847}
+	EndGlobalSection
+EndGlobal

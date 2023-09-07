@@ -1,0 +1,23 @@
+﻿@using AnimedleWeb.Models
+@model AnimedleWeb.Models.AniListResults
+
+@{
+    int ii = 1;
+}
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Test"]</h1>
+
+@foreach(var anime in Model.Data.Page.Media)
+{
+    <h3> @ii: @anime.Title.English</h3>
+    <p>Score: @anime.AverageScore.ToString()</p>
+    <p>Released: @anime.SeasonYear.ToString()</p>
+    if (anime.Episodes != null)
+    {
+        <p>Episodes: @anime.Episodes.ToString()</p>
+    }
+    ii++;
+}

@@ -1,0 +1,27 @@
+﻿Backend/Database:
+
+	Query the top X anime:
+		X Pages
+		Y Results per page
+		FAVOURITES_DESC
+
+	Store in database of Anime objects
+
+	Query random anime from the database every day
+	Flag anime as USED so it cannot be used again until database reset
+	If database.size() < A THEN query the top X anime again and repopulate database with the new top X
+
+Mechanics/UI:
+
+	Search box with all anime currently in the database
+	Searched/Selected anime will be compared against the daily anime by categories
+
+	Compare guess to daily by categories
+	if guess_category == daily_category THEN green mark
+	if guess_category shares AT LEAST one element with daily_category THEN yellow mark
+	Else red mark
+
+	Potential Categories: WIP
+
+	User gets 10 Guesses
+	User gets 1 hint at 5 lives that will give them the answer to a single category
