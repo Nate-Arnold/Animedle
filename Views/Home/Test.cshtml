@@ -12,7 +12,7 @@
 
 @foreach(var anime in Model.Data.Page.Media)
 {
-    <h3> @ii: @anime.Title.English</h3>
+    <h3> @ii: @anime.Title.English | @anime.Title.Romaji | @anime.Title.Native</h3>
     <p>Score: @anime.AverageScore.ToString()</p>
     <p>Released: @anime.SeasonYear.ToString()</p>
     if (anime.Episodes != null)

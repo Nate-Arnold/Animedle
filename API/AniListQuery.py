@@ -11,7 +11,9 @@ query ($page: Int, $perPage: Int) {
       }
       media(type: ANIME, sort: FAVOURITES_DESC) {
         title {
+          romaji
           english
+          native
         }
         averageScore
         seasonYear
@@ -23,7 +25,7 @@ query ($page: Int, $perPage: Int) {
    
 variables = {
    'page': 1,
-   'perPage': 500,
+   'perPage': 50,
 };
 
 url = 'https://graphql.anilist.co'

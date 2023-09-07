@@ -5,8 +5,15 @@ using System.Text.Json;
 
 namespace AnimedleWeb.API
 {
+    /// <summary>
+    /// Gateway class to communicate with the AniList API
+    /// </summary>
     public class AniList
     {
+        /// <summary>
+        /// Retreives the top anime(by popularity) from AniList
+        /// </summary>
+        /// <returns>The top anime results as an AniListResults object</returns>
         public AniListResults GetTopAnime()
         {
             string pythonScriptLocation = "D:\\Coding\\AnimedleWeb\\API\\AniListQuery.py";

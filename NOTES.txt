@@ -5,6 +5,8 @@
 		Y Results per page
 		FAVOURITES_DESC
 
+		^^^^ Can only get 50 per page, so must make multiple API calls and update database with each call?
+
 	Store in database of Anime objects
 
 	Query random anime from the database every day
