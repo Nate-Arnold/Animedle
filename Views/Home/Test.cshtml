@@ -20,10 +20,10 @@
         <p>Episodes: @anime.Episodes.ToString()</p>
     }
 
-    if(anime.Studio != null)
+    if(anime.Studios != null)
     {
         <p>Studios:</p>
-        foreach (var studio in anime.Studio.nodes)
+        foreach (var studio in anime.Studios.Nodes)
         {
             <p>@studio.Name</p>
         }

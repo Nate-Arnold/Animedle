@@ -1,4 +1,6 @@
-﻿namespace AnimedleWeb.Models
+﻿using System.Xml.Linq;
+
+namespace AnimedleWeb.Models
 {
     /// <summary>
     /// Top layer of AniListResults(data from API call)
@@ -26,7 +28,7 @@
     }
 
     /// <summary>
-    /// Stores the info of the search page the Media was pulled from
+    /// Stores the info of the search page the AniListMedia was pulled from
     /// </summary>
     public class AniListPageInfo
     {
@@ -35,7 +37,7 @@
     }
 
     /// <summary>
-    /// Stores the info of the Media(anime) pulled from AniList
+    /// Stores the info of the media(anime) pulled from AniList
     /// </summary>
     public class AniListMedia
     {
@@ -44,12 +46,12 @@
         public int AverageScore { get; set; }
         public int SeasonYear { get; set; }
         public int? Episodes { get; set;}
-        public AniListStudio? Studio { get; set; }
+        public AniListStudioConnection? Studios { get; set; }
         //public List<string>? Genres { get; set; }
     }
 
     /// <summary>
-    /// Stores the different titles of the Media
+    /// Stores the different titles of the AniListMedia
     /// </summary>
     public class AniListTitle
     {
@@ -58,11 +60,18 @@
         public string? Native { get; set; }
     }
 
-    public class AniListStudio
+    /// <summary>
+    /// Stores connecting info of an anime to the studios that created it
+    /// </summary>
+    public class AniListStudioConnection
     {
-        public List<AniListNode>? nodes { get; set; } 
+        public List<AniListStudio>? Nodes { get; set; }
     }
-    public class AniListNode
+
+    /// <summary>
+    /// Stores the info of a studio pulled from AniList
+    /// </summary>
+    public class AniListStudio
     { 
         public string? Name { get; set; }
     }
