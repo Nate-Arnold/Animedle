@@ -10,6 +10,7 @@ query ($page: Int, $perPage: Int) {
         perPage
       }
       media(type: ANIME, sort: FAVOURITES_DESC) {
+        id
         title {
           romaji
           english
@@ -18,6 +19,11 @@ query ($page: Int, $perPage: Int) {
         averageScore
         seasonYear
         episodes
+        studios(sort: NAME_DESC, isMain: true) {
+            nodes {
+                name
+            }
+        }
       }
     }
   }

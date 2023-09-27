@@ -19,5 +19,15 @@
     {
         <p>Episodes: @anime.Episodes.ToString()</p>
     }
+
+    if(anime.Studio != null)
+    {
+        <p>Studios:</p>
+        foreach (var studio in anime.Studio.nodes)
+        {
+            <p>@studio.Name</p>
+        }
+    }
+
     ii++;
 }

@@ -39,10 +39,13 @@
     /// </summary>
     public class AniListMedia
     {
+        public int ID { get; set; }
         public AniListTitle? Title { get; set; }
         public int AverageScore { get; set; }
         public int SeasonYear { get; set; }
         public int? Episodes { get; set;}
+        public AniListStudio? Studio { get; set; }
+        //public List<string>? Genres { get; set; }
     }
 
     /// <summary>
@@ -53,5 +56,14 @@
         public string? Romaji { get; set; }
         public string? English { get; set; }
         public string? Native { get; set; }
+    }
+
+    public class AniListStudio
+    {
+        public List<AniListNode>? nodes { get; set; } 
+    }
+    public class AniListNode
+    { 
+        public string? Name { get; set; }
     }
 }
