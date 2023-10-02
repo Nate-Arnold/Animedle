@@ -1,37 +1,60 @@
 ﻿CREATE TABLE AniListMedia 
 (
- ID int PRIMARY KEY IDENTITY(1,1),
- MediaTitle varchar(256) not null,
- MediaType varchar(256) not null,
+ ID int,
+ TitleRomaji varchar(256) not null,
+ TitleEnglish varchar(256) not null,
+ TitleNative varchar(256) not null,
+ MediaData varchar(max) not null,
  Timestamp datetime default(getdate())
 )
 GO
-CREATE PROCEDURE AniList_GetList
+CREATE PROCEDURE AniListGetTitles
 AS
-SELECT ID, MediaTitle, MediaType
-FROM SudokuPuzzles
+SELECT ID, TitleRomaji, TitleEnglish, TitleNative
+FROM AniListMedia
 ORDER BY Timestamp DESC;
 GO
-CREATE PROCEDURE AniList_SaveMedia
+CREATE PROCEDURE AniListSaveMedia
 (
-	@MediaTitle varchar(256),
-	@MediaType varchar(256)
+	@ID int,
+	@TitleRomaji varchar(256),
+	@TitleEnglish varchar(256),
+	@TitleNative varchar(256),
+	@MediaData varchar(256)
 )
 AS
-INSERT INTO AniListMedia(MediaTitle, MediaType)
-VALUES(@MediaTitle, @MediaType)
+INSERT INTO AniListMedia(ID, TitleRomaji, TitleEnglish, TitleNative, MediaData)
+VALUES(@ID, @TitleRomaji, @TitleEnglish, @TitleNative, @MediaData)
 GO
-CREATE PROCEDURE AniList_GetByID
+CREATE PROCEDURE AniListGetByRomaji
 (
-	@ID int
+	@TitleRomaji varchar(256)
 )
 AS
-SELECT ID, MediaTitle, MediaType FROM AniListMedia WHERE ID=@ID
+SELECT MediaData FROM AniListMedia WHERE TitleRomaji=@TitleRomaji
 GO
-CREATE PROCEDURE AniList_RemoveByID
+CREATE PROCEDURE AniListGetByEnglish
+(
+	@TitleEnglish varchar(256)
+)
+AS
+SELECT MediaData FROM AniListMedia WHERE TitleEnglish=@TitleEnglish
+GO
+CREATE PROCEDURE AniListGetByNative
+(
+	@TitleNative varchar(256)
+)
+AS
+SELECT MediaData FROM AniListMedia WHERE TitleNative=@TitleNative
+GO
+CREATE PROCEDURE AniListRemoveByID
 (
 	@ID int
 )
 AS
 DELETE FROM AniListMedia WHERE ID=@ID
+GO
+CREATE PROCEDURE AniListClearDatabase
+AS
+DELETE FROM AniListMedia
 GO

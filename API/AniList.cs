@@ -17,13 +17,15 @@ namespace AnimedleWeb.API
         public AniListResults GetTopAnime()
         {
             string pythonScriptLocation = "D:\\Coding\\AnimedleWeb\\API\\AniListQuery.py";
+            string arguments = string.Format("{0} {1}", pythonScriptLocation, 1);
+
             ProcessStartInfo processInfo = new ProcessStartInfo("python3")
             {
                 //Make sure we can read the output from stdout 
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
 
-                Arguments = pythonScriptLocation
+                Arguments = arguments
             };
 
             Process getTopAnime = new Process();

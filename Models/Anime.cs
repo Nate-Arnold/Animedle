@@ -47,7 +47,7 @@ namespace AnimedleWeb.Models
         public int SeasonYear { get; set; }
         public int? Episodes { get; set;}
         public AniListStudioConnection? Studios { get; set; }
-        //public List<string>? Genres { get; set; }
+        public List<string>? Genres { get; set; }
     }
 
     /// <summary>

@@ -23,7 +23,8 @@ Mechanics/UI:
 	if guess_category shares AT LEAST one element with daily_category THEN yellow mark
 	Else red mark
 
-	Potential Categories: WIP
+	Potential Categories:
+		Top X Placement, Average Score, Episodes, Studio, Genres, Release date, Popularity??
 
 	User gets 10 Guesses
 	User gets 1 hint at 5 lives that will give them the answer to a single category

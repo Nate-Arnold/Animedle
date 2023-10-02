@@ -19,14 +19,17 @@
     {
         <p>Episodes: @anime.Episodes.ToString()</p>
     }
+    <p>Studio: @anime.Studios.Nodes[0].Name</p>
 
-    if(anime.Studios != null)
+    if(anime.Genres != null)
     {
-        <p>Studios:</p>
-        foreach (var studio in anime.Studios.Nodes)
+        <div>Genres:</div>
+        <ul>
+        @foreach(var genre in anime.Genres)
         {
-            <p>@studio.Name</p>
+            <li>@genre</li>
         }
+        </ul>
     }
 
     ii++;

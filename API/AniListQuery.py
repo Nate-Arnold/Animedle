@@ -24,13 +24,14 @@ query ($page: Int, $perPage: Int) {
                 name
             }
         }
+        genres
       }
     }
   }
 '''
    
 variables = {
-   'page': 1,
+   'page': sys.argv[1],
    'perPage': 50,
 };
 
