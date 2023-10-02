@@ -8,9 +8,11 @@ namespace AnimedleWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
         {
+            _configuration = configuration;
             _logger = logger;
         }
 
@@ -21,8 +23,9 @@ namespace AnimedleWeb.Controllers
 
         public IActionResult Test()
         {
-            AniList aniList = new AniList();
+            AniList aniList = new AniList(_configuration);
             AniListResults topAnime = aniList.GetTopAnime();
+            aniList.PopulateAnimedleDatabase();
 
             return View(topAnime);
         }

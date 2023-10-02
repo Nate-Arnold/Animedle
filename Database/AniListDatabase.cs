@@ -3,12 +3,18 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Xml.Serialization;
+using Microsoft.Extensions.Configuration;
 
 namespace AnimedleWeb.Database
 {
     public class AniListDatabase
     {
         private readonly IConfiguration _configuration;
+        
+        public AniListDatabase(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         /// <summary>
         /// 
@@ -46,7 +52,7 @@ namespace AnimedleWeb.Database
         /// <param name="mediaList"></param>
         public void AniListSaveMedia(List<AniListMedia> mediaList)
         {
-            string connectionString = _configuration.GetConnectionString("AnimedleDatabase");
+            string connectionString = _configuration.GetConnectionString("AnimedleDatabase"); 
             using SqlConnection connection = new SqlConnection(connectionString);
             using SqlCommand command = new SqlCommand("AniListSaveMedia", connection) { CommandType = CommandType.StoredProcedure };
 
@@ -66,6 +72,7 @@ namespace AnimedleWeb.Database
                 command.Parameters.AddWithValue("@MediaData", writer.ToString());
 
                 command.ExecuteNonQuery();
+                command.Parameters.Clear();
             }
         }
     }
