@@ -23,9 +23,16 @@ namespace AnimedleWeb.Controllers
 
         public IActionResult Test()
         {
-            AniList aniList = new AniList(_configuration);
-            AniListResults topAnime = aniList.GetTopAnime();
-            aniList.PopulateAnimedleDatabase();
+            AniList aniList = new AniList(_configuration); //TODO Testing
+            AniListResults topAnime = aniList.GetTopAnime(); //TODO Testing
+            aniList.AniListClearDatabase(); //TODO Testing
+            aniList.PopulateAnimedleDatabase(); //TODO Testing
+
+            //Testing "GetBy" functions
+            AniListMedia media = aniList.AniListGetByRomaji("Koe No Katachi"); //TODO Testing
+            media = aniList.AniListGetByRomaji("Shingeki no Kyojin"); //TODO Testing 
+            media = aniList.AniListGetByRomaji("Kimetsu no Yaiba"); //TODO Testing 
+            aniList.AniListRemoveByID(21); //TODO Testing Should Remove One Piece from database
 
             return View(topAnime);
         }

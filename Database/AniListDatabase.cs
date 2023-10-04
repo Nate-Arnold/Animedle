@@ -4,6 +4,9 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Xml.Serialization;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualBasic;
+using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AnimedleWeb.Database
 {
@@ -49,6 +52,31 @@ namespace AnimedleWeb.Database
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="romaji"></param>
+        /// <returns></returns>
+        public AniListMedia AniListGetByRomaji(string romaji)
+        {
+            AniListMedia media;
+            string mediaAsXML;
+            string connectionString = _configuration.GetConnectionString("AnimedleDatabase");
+
+            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlCommand command = new SqlCommand("AniListGetByRomaji", connection) { CommandType = CommandType.StoredProcedure };
+            command.Parameters.AddWithValue("@TitleRomaji", romaji);
+            connection.Open();
+            using SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            mediaAsXML = (string)reader["MediaData"];
+
+            //Convert XML String back to AniListMedia object
+            media = (AniListMedia)new XmlSerializer(typeof(AniListMedia)).Deserialize(new StringReader(mediaAsXML));
+
+            return media;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="mediaList"></param>
         public void AniListSaveMedia(List<AniListMedia> mediaList)
         {
@@ -72,8 +100,36 @@ namespace AnimedleWeb.Database
                 command.Parameters.AddWithValue("@MediaData", writer.ToString());
 
                 command.ExecuteNonQuery();
+
+                //Must clear paramaters each loop since it is a single connection
                 command.Parameters.Clear();
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        public void AniListRemoveByID(int id)
+        {
+            string connectionString = _configuration.GetConnectionString("AnimedleDatabase");
+            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlCommand command = new SqlCommand("AniListRemoveByID", connection) { CommandType = CommandType.StoredProcedure };
+            command.Parameters.AddWithValue("@ID", id);
+            connection.Open();
+            command.ExecuteNonQuery();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void AniListClearDatabase()
+        {
+            string connectionString = _configuration.GetConnectionString("AnimedleDatabase");
+            using SqlConnection connection = new SqlConnection(connectionString);
+            using SqlCommand command = new SqlCommand("AniListClearDatabase", connection) { CommandType = CommandType.StoredProcedure };
+            connection.Open();
+            command.ExecuteNonQuery();
         }
     }
 }

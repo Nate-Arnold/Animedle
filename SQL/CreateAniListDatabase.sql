@@ -3,7 +3,7 @@
  ID int,
  TitleRomaji varchar(256) not null,
  TitleEnglish varchar(256) not null,
- TitleNative varchar(256) not null,
+ TitleNative nvarchar(256) not null,
  MediaData varchar(max) not null,
  Timestamp datetime default(getdate())
 )
@@ -19,8 +19,8 @@ CREATE PROCEDURE AniListSaveMedia
 	@ID int,
 	@TitleRomaji varchar(256),
 	@TitleEnglish varchar(256),
-	@TitleNative varchar(256),
-	@MediaData varchar(256)
+	@TitleNative nvarchar(256),
+	@MediaData varchar(max)
 )
 AS
 INSERT INTO AniListMedia(ID, TitleRomaji, TitleEnglish, TitleNative, MediaData)
@@ -42,7 +42,7 @@ SELECT MediaData FROM AniListMedia WHERE TitleEnglish=@TitleEnglish
 GO
 CREATE PROCEDURE AniListGetByNative
 (
-	@TitleNative varchar(256)
+	@TitleNative nvarchar(256)
 )
 AS
 SELECT MediaData FROM AniListMedia WHERE TitleNative=@TitleNative
