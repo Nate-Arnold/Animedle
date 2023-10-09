@@ -1,10 +1,10 @@
 ﻿CREATE TABLE AniListMedia 
 (
  ID int,
- TitleRomaji varchar(256) not null,
- TitleEnglish varchar(256) not null,
- TitleNative nvarchar(256) not null,
- MediaData varchar(max) not null,
+ TitleRomaji varchar(256),
+ TitleEnglish varchar(256),
+ TitleNative nvarchar(256),
+ MediaData varchar(max),
  Timestamp datetime default(getdate())
 )
 GO

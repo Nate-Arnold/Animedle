@@ -25,7 +25,7 @@ namespace AnimedleWeb.API
         public AniListResults GetTopAnime()
         {
             string pythonScriptLocation = "D:\\Coding\\AnimedleWeb\\API\\AniListQuery.py";
-            string arguments = string.Format("{0} {1}", pythonScriptLocation, 1);
+            string arguments = string.Format("{0} {1}", pythonScriptLocation, 5);
 
             ProcessStartInfo processInfo = new ProcessStartInfo("python3")
             {
@@ -68,9 +68,9 @@ namespace AnimedleWeb.API
         {
             string pythonScriptLocation = "D:\\Coding\\AnimedleWeb\\API\\AniListQuery.py";
 
-            for (int ii = 0; ii < 2; ii++) //TODO 2 is arbitrary testing number
+            for (int ii = 1; ii < 5; ii++) //TODO 2 is arbitrary testing number
             {
-                string arguments = string.Format("{0} {1}", pythonScriptLocation, 1);
+                string arguments = string.Format("{0} {1}", pythonScriptLocation, ii); 
 
                 ProcessStartInfo processInfo = new ProcessStartInfo("python3")
                 {

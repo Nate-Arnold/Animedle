@@ -32,8 +32,8 @@ namespace AnimedleWeb.Models
     /// </summary>
     public class AniListPageInfo
     {
-        public int Total { get; set; }
-        public int PerPage { get; set; }
+        public int? Total { get; set; }
+        public int? PerPage { get; set; }
     }
 
     /// <summary>
@@ -41,10 +41,10 @@ namespace AnimedleWeb.Models
     /// </summary>
     public class AniListMedia
     {
-        public int ID { get; set; }
+        public int? ID { get; set; }
         public AniListTitle? Title { get; set; }
-        public int AverageScore { get; set; }
-        public int SeasonYear { get; set; }
+        public int? AverageScore { get; set; }
+        public int? SeasonYear { get; set; }
         public int? Episodes { get; set;}
         public AniListStudioConnection? Studios { get; set; }
         public List<string>? Genres { get; set; }

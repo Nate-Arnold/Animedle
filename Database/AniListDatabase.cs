@@ -94,9 +94,35 @@ namespace AnimedleWeb.Database
                 serializer.Serialize(writer, media);
 
                 command.Parameters.AddWithValue("@ID", media.ID);
-                command.Parameters.AddWithValue("@TitleRomaji", media.Title.Romaji);
-                command.Parameters.AddWithValue("@TitleEnglish", media.Title.English);
-                command.Parameters.AddWithValue("@TitleNative", media.Title.Native);
+
+                //Should be able to make SQL variables NULLABLE, but it aint working so this garbage is happening for now
+                if(media.Title.Romaji != null)
+                {
+                    command.Parameters.AddWithValue("@TitleRomaji", media.Title.Romaji);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@TitleRomaji", "");
+                }
+
+                if(media.Title.English != null)
+                {
+                    command.Parameters.AddWithValue("@TitleEnglish", media.Title.English);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@TitleEnglish", "");
+                }
+
+                if (media.Title.Native != null)
+                {
+                    command.Parameters.AddWithValue("@TitleNative", media.Title.Native);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@TitleNative", "");
+                }
+
                 command.Parameters.AddWithValue("@MediaData", writer.ToString());
 
                 command.ExecuteNonQuery();
